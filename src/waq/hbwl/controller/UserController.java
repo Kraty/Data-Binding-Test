@@ -2,16 +2,24 @@ package waq.hbwl.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import javax.servlet.http.HttpServletRequest;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class UserController {
 
-    @RequestMapping(value = "/selectUser")
-    public String selectUser(HttpServletRequest request) {
+//    @RequestMapping(value = "/selectUser")
+//    public String selectUser(HttpServletRequest request) {
+//
+//        String id = request.getParameter("id");
+//        System.out.println("id = " + id);
+//        return "success";
+//
+//    }
 
-        String id = request.getParameter("id");
+    // 简单数据类型绑定
+    @RequestMapping(value = "/selectUser")
+    public String selectUser(@RequestParam(value = "user_id") Integer id) {
+
         System.out.println("id = " + id);
         return "success";
 
