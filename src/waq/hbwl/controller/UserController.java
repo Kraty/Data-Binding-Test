@@ -4,6 +4,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import waq.hbwl.po.User;
+import waq.hbwl.po.UserVo;
+
+import java.util.List;
 
 @Controller
 public class UserController {
@@ -54,7 +57,7 @@ public class UserController {
     }
 
     /*
-     * 接受用户信息
+     * 接受删除用户的方法
      * */
     @RequestMapping(value = "/deleteUser")
     public String deleteUser(Integer[] ids) {
@@ -67,6 +70,30 @@ public class UserController {
 
         } else {
             System.out.println("id is null !!!");
+        }
+        return "success";
+
+    }
+
+    /*
+     * 向用户批量修改页面跳转
+     * */
+    @RequestMapping(value = "/toUserEdit")
+    public String toUserEdit() {
+        return "edit";
+    }
+
+    /*
+     * 接受批量修改用户的方法
+     * */
+    @RequestMapping(value = "/editUser")
+    public String editUser(UserVo userVo) {
+
+        List<User> users = userVo.getUsers();
+        for (User user : users) {
+            if (user.getId() != null) {
+                System.out.println("edit id : " + user.getUsername());
+            }
         }
         return "success";
 
