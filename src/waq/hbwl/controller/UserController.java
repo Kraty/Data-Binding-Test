@@ -40,9 +40,34 @@ public class UserController {
     @RequestMapping(value = "/registUser")
     public String registUser(User user) {
 
-        String username = user.getUsername();
-        String password = user.getPassword();
         System.out.println(user);
+        return "success";
+
+    }
+
+    /*
+     * 向用户列表页面跳转
+     * */
+    @RequestMapping(value = "/toUser")
+    public String toUser() {
+        return "user";
+    }
+
+    /*
+     * 接受用户信息
+     * */
+    @RequestMapping(value = "/deleteUser")
+    public String deleteUser(Integer[] ids) {
+
+        if (ids != null) {
+
+            for (int id : ids) {
+                System.out.println("delete id : " + id);
+            }
+
+        } else {
+            System.out.println("id is null !!!");
+        }
         return "success";
 
     }
